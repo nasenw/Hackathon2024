@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+<!-- Clickable Tab Objects -->
+<div class="tab-container">
+    <button class="tab-button active" onclick="openTab('organization')">Organization</button>
+    <button class="tab-button" onclick="openTab('finance')">Finance</button>
+    <button class="tab-button" onclick="openTab('forms')">Forms</button>
+    <button class="tab-button" onclick="openTab('inventory')">Inventory</button>
+    <h1 align="right">WSU Everett Club 
+
+</div>
+
+<!-- Content for the respective page after tab selection by user -->
+<div id="organization" class="tab-content active">
+    <h2 align="middle">Organization Chart</h2>
+    <div class="organization-image-container">
+        <img src=images/organization_chart.png alt="Organization Image">
+    </div>
+<br><br><br>
+
+<!-- A Table that displays the information of the organizations' members  -->
+    <table border="2">
+        <caption>Member Directory</caption>
+        <tr>
+            <th>Member Role</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+        </tr>
+    </table>
+</div>
+
+<!-- content for the finance tab -->
+<div id="finance" class="tab-content">
+    <h2>Finance</h2>
+    <p>Available Funds: $XXXX.XX</p>
+
+    <!-- Creating the Pie Chart For Expenditure Pie Chart -->
+    <canvas id="expenditurePieChart" width="400" height="400"></canvas>
+
+    <script>
+        var ctx = document.getElementById('expenditurePieChart').getContext('2d');
+        var data = {
+            labels: ['Equipment', 'Materials', 'Travel', 'Food', 'Reimbursment', 'Fees'],
+            datasets: [{
+                label: 'Expenditures',
+                data: [12,19,3,5,2,3],
+                backgroundColor: ['red','blue','yellow','green','purple','gray']
+            }]
+        };
+
+        var options = {
+            responsive: false, // Disable automatic resizing
+            maintainAspectRatio: false, // Disable maintaining aspect ratio
+        
+        };
+
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: options
+        });
+    </script>
+
+    <br><br><br>
+
+    <!-- Creating a table that outlines sources of funding -->
+
+    <table border="2">
+        <caption>Funding Sources</caption>
+        <tr>
+            <th>Source</th>
+            <th>Amount</th>
+            <th>Date Posted</th>
+        </tr>
+        <tr>
+            <td>S&A Funds</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>The Boeing Company</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>Janicki Industries</td>
+            <td></td>
+            <td></td>
+        
+        </tr>
+
+    </table>
+
+
+</div>
+
+<!-- content for the forms tab -->
+<div id="forms" class="tab-content">
+    <h2>Forms</h2>
+    <p>This is the Forms tab content.</p>
+</div>
+
+<!-- content for the inventory tab -->
+<div id="inventory" class="tab-content">
+    <h2>Inventory</h2>
+    <p>This is the Inventory tab content.</p>
+</div>
+
+<script src="hackathonScript.js"></script>
+</body>
+</html>
