@@ -3,10 +3,11 @@ const { Model, DataTypes } = require('sequelize')
 
 class User extends Model {
 
-    static async findUser(email, password){
+    static async findUser(email){
         try {
             const user = await User.findByPk(email)
-            if(user && user.password === password){
+            console.log(user + " " + email);
+            if(user.email === email){
                 return user
             }else{
                 return null
@@ -14,6 +15,21 @@ class User extends Model {
         } catch (error) {
             return null
         }
+    }
+
+    static async validateUser(email, password)
+    {
+      try {
+        const user = await User.findByPk(email)
+        
+        if(user && user.password === password){
+            return user
+        }else{
+            return null
+        }
+    } catch (error) {
+        return null
+    }
     }
 }
 

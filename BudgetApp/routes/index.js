@@ -17,12 +17,21 @@ router.get('/index', (req, res, next) => {
 
 router.post('/user-signedup', async function(req, res, next) {
 
-  const user = await User.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
-})
+  const existing = await User.findUser(req.body.email);
+  console.log(existing + "Yooo");
+  if (existing == null)
+  {
+    const user = await User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password,
+  })
+  }
+  else {
+    console.log("User already in database");
+  }
+  
   // const user = await User.findUser(req.body.username, req.body.password)
   // if(user!== null){
   //   req.session.user = user
@@ -30,7 +39,8 @@ router.post('/user-signedup', async function(req, res, next) {
   // }else{
   //   res.redirect("/?msg=fail")
   // }
-  res.redirect('/');
+  
+  res.redirect('/homepage');
 })
 
 module.exports = router;
