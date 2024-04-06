@@ -52,7 +52,7 @@
 <!-- content for the finance tab -->
 <div id="finance" class="tab-content">
     <h2>Finance</h2>
-    <p>Available Funds: $XXXX.XX</p>
+    <p class="my-text-figures">Available Funds: $XXXX.XX</p>
 
     <!-- Creating the Pie Chart For Expenditure Pie Chart -->
     <canvas id="expenditurePieChart" width="400" height="400"></canvas>
@@ -93,20 +93,19 @@
             <th>Date Posted</th>
         </tr>
         <tr>
-            <td>S&A Funds</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>The Boeing Company</td>
+            <td contenteditable="true"></td>
             <td contenteditable="true"></td>
             <td contenteditable="true"></td>
         </tr>
         <tr>
-            <td>Janicki Industries</td>
-            <td></td>
-            <td></td>
-        
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
         </tr>
 
     </table>
@@ -118,6 +117,22 @@
 <div id="forms" class="tab-content">
     <h2>Forms</h2>
     <p>This is the Forms tab content.</p>
+
+    <!-- Creating a Downloadable Purchase Order Form  -->
+    <a href="CSV_Files/Standard_Purchase_Order_Form.xlsx" download="Standard_Purchase_Order_Form.csv">Download Standard Purchase Order Form</a>
+
+    <!-- Now creating a place for the members to upload a purchase form -->
+    <body>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <h2>File Upload</h2>
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <br><br>
+            <input type="submit" value="Upload File" name="submit">
+        </form>
+
+
+
+
 </div>
 
 <!-- content for the inventory tab -->

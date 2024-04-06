@@ -17,3 +17,31 @@ function openTab(tabName) {
         }
     }
 }
+
+document.getElementById('csvFileInput').addEventListener('change', function() {
+    var file = this.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var csvData = event.target.result;
+            var csvRows = csvData.split('\n');
+            var tableBody = document.querySelector('#csvTable tbody');
+
+            // Clear existing table contents
+            tableBody.innerHTML = '';
+
+            // Populate table rows
+            csvRows.forEach(function(csvRow) {
+                var rowCells = csvRow.split(',');
+                var tableRow = document.createElement('tr');
+                rowCells.forEach(function(cellData) {
+                    var tableCell = document.createElement('td');
+                    tableCell.textContent = cellData.trim();
+                    tableRow.appendChild(tableCell);
+                });
+                tableBody.appendChild(tableRow);
+            });
+        };
+        reader.readAsText(file);
+    }
+});
