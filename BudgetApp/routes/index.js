@@ -15,6 +15,10 @@ router.get('/index', (req, res, next) => {
   res.render('index')
 })
 
+router.get('/homepage',(req, res, next) => {
+  res.render('homepage')
+})
+
 router.post('/user-signedup', async function(req, res, next) {
 
   const existing = await User.findUser(req.body.email);
@@ -40,7 +44,7 @@ router.post('/user-signedup', async function(req, res, next) {
   //   res.redirect("/?msg=fail")
   // }
   
-  res.redirect('/homepage');
+  res.redirect('homepage');
 })
 
 module.exports = router;
