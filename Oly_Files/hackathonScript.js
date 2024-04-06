@@ -18,30 +18,46 @@ function openTab(tabName) {
     }
 }
 
-document.getElementById('csvFileInput').addEventListener('change', function() {
-    var file = this.files[0];
-    if (file) {
-        var reader = new FileReader();
-        reader.onload = function(event) {
-            var csvData = event.target.result;
-            var csvRows = csvData.split('\n');
-            var tableBody = document.querySelector('#csvTable tbody');
+// document.getElementById('csvFileInput').addEventListener('change', function() {
+//     var file = this.files[0];
+//     if (file) {
+//         var reader = new FileReader();
+//         reader.onload = function(event) {
+//             var csvData = event.target.result;
+//             var csvRows = csvData.split('\n');
+//             var tableBody = document.querySelector('#csvTable tbody');
+//             var tableHeaders = document.querySelector('#csvTable thead');
 
-            // Clear existing table contents
-            tableBody.innerHTML = '';
+//             // Clear existing table contents
+//             tableBody.innerHTML = '';
+//             tableHeaders.innerHTML = '';
 
-            // Populate table rows
-            csvRows.forEach(function(csvRow) {
-                var rowCells = csvRow.split(',');
-                var tableRow = document.createElement('tr');
-                rowCells.forEach(function(cellData) {
-                    var tableCell = document.createElement('td');
-                    tableCell.textContent = cellData.trim();
-                    tableRow.appendChild(tableCell);
-                });
-                tableBody.appendChild(tableRow);
-            });
-        };
-        reader.readAsText(file);
-    }
-});
+//             // Extract headers from the first row
+//             var headers = csvRows[0].split(',');
+
+//             // Populate table headers
+//             var headerRow = document.createElement('tr');
+//             headers.forEach(function(header) {
+//                 var th = document.createElement('th');
+//                 th.textContent = header.trim();
+//                 headerRow.appendChild(th);
+//             });
+//             tableHeaders.appendChild(headerRow);
+
+//             // Populate table rows
+//             csvRows.slice(1).forEach(function(csvRow) {
+//                 var rowCells = csvRow.split(',');
+//                 var tableRow = document.createElement('tr');
+//                 rowCells.forEach(function(cellData) {
+//                     var tableCell = document.createElement('td');
+//                     tableCell.textContent = cellData.trim();
+//                     // Make cells editable
+//                     tableCell.setAttribute('contenteditable', true);
+//                     tableRow.appendChild(tableCell);
+//                 });
+//                 tableBody.appendChild(tableRow);
+//             });
+//         };
+//         reader.readAsText(file);
+//     }
+// });
